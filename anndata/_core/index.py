@@ -49,10 +49,10 @@ def _normalize_index(
     ],
     index: pd.Index,
 ) -> Union[slice, int, np.ndarray]:  # ndarray of int
-    #  if not isinstance(index, pd.RangeIndex):
-    #      assert (
-    #          index.dtype != float and index.dtype != int
-    #      ), "Don’t call _normalize_index with non-categorical/string names"
+    if not isinstance(index, pd.RangeIndex):
+        assert (
+            index.dtype != float and index.dtype != int
+        ), "Don’t call _normalize_index with non-categorical/string names"
 
     # the following is insanely slow for sequences,
     # we replaced it using pandas below
